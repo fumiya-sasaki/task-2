@@ -28,26 +28,26 @@
                          </ul>
                       @endif
                       <div class = "form-group row">
-                          <label class = "col-md-2">氏名</label>
+                          <label class = "col-md-2" for = 'title'>氏名</label>
                           <div class = "col-md-10">
                               <input type = "text" class = "form-control" name = "name" 
                                value = "{{ old('title') }}">
                           </div>
                       </div>
                       <div class = "from-group-row">
-                          <label class = "col-md-2">性別</label>
+                          <label class = "col-md-2" for = 'title'>性別</label>
                           <div class = "col-md-10">
                                <input type = "text" class = "form-control-file" name = "gender">
                           </div>
                       </div>
                       <div class = "from-group-row">
-                          <label class = "col-md-2">趣味</label>
+                          <label class = "col-md-2" for = 'title'>趣味</label>
                           <div class = "col-md-10">
                                <input type = "text" class = "form-control-file" name = "hobby">
                           </div>
                       </div>
                       <div class = "form-group-row">
-                          <label class = "col-md-2">自己紹介欄</label>
+                          <label class = "col-md-2" for = 'body'>自己紹介欄</label>
                           <div class = "col-md-10">
                                <textarea class = "form-control" name = "introduction" rows = "20">{{ old('body') }}</textarea>
                           </div>
