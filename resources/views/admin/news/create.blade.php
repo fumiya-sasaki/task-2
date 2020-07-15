@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>MyNews</title>
-    </head>
-    <body>
-        <h1>Myニュース作成画面</h1>
-    
     @extends('layouts.admin')
     @section('title', 'ニュースの新規作成')
     @section('content')
@@ -34,13 +23,13 @@
                                value = "{{ old('title') }}">
                           </div>
                       </div>
-                      <div class = "form-group-row">
+                      <div class = "form-group row">
                           <label class = "col-md-2" for = "body">本文</label>
                           <div class = "col-md-10">
                                <textarea class = "form-control" name = "body" rows = "20">{{ old('body') }}</textarea>
                           </div>
                       </div>
-                      <div class = "from-group-row">
+                      <div class = "from-group row">
                           <label class = "col-md-2" for = "title">画像</label>
                           <div class = "col-md-10">
                                <input type = "file" class = "form-control-file" name = "image">
@@ -54,5 +43,4 @@
       </div>
     @endsection
         
-    </body>
-</html>
+  
