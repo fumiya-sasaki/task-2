@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Profile;
+
 class ProfileController extends Controller
 {
      public function add()
@@ -23,11 +25,16 @@ class ProfileController extends Controller
         
         return redirect('admin/profile/create');
     }
+     public function edit(Request $request)
+  {
+      $news = Profile::find($request->id);
+      if (empty($news)) {
+        abort(404);    
+      }
+      return view('admin.profile.edit', ['news_form' => $news]);
+  }
 
-    public function edit()
-    {
-        return view('admin.profile.edit');
-    }
+    
 
     public function update()
     {
