@@ -29,7 +29,7 @@ class ProfileController extends Controller
     }
      public function edit(Request $request)
   {
-      $profile=Profile::find($request->id);
+      $profile = Profile::find($request->id);
       if (empty($profile)) {
         abort(404);    
       }
@@ -41,12 +41,12 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, Profile::$rules);
-        $profile=Profile::find($request->id);
+        $profile = Profile::find($request->id);
         $profile_form = $request->all();
         unset($profile_form['_token']);
         $profile->fill($profile_form)->save();
         $update = new Update;
-        $update->profile_id= $profile->id;
+        $update->profile_id = $profile->id;
         $update->edited_at = Carbon::now();
         $update->save();
         return redirect('admin/profile/edit');

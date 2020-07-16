@@ -14,4 +14,7 @@ class Profile extends Model
         'hobby' => 'required',
         'introduction' => 'required',
         );
+    public function updates(){
+        return $this->hasMany('App\Update');
+    }    
 }

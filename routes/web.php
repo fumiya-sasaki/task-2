@@ -29,11 +29,15 @@ Route::get('/' , 'NewsController@index');
 
 Route::get('xxx' , 'AAAController@bbb');
 
-Route::get('admin/profile/create' , 'Admin\ProfileController@add')->middleware('auth');;
-Route::post('admin/profile/create' , 'Admin\ProfileController@create')->middleware('auth');;
+Route::get('admin/profile/create' , 'Admin\ProfileController@add')->middleware('auth');
+Route::post('admin/profile/create' , 'Admin\ProfileController@create')->middleware('auth');
 
-Route::get('admin/profile/edit' , 'Admin\ProfileController@edit')->middleware('auth');;
-Route::post('admin/profile/edit' , 'Admin\ProfileController@update')->middleware('auth');;
+Route::get('admin/profile/edit' , 'Admin\ProfileController@edit')->middleware('auth');
+Route::post('admin/profile/edit' , 'Admin\ProfileController@update')->middleware('auth');
 Auth::routes();
+
+
+
+Route::get('/profile', 'ProfileController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
