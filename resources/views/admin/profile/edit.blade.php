@@ -18,7 +18,7 @@
                      <div class="form-group row">
                         <label class="col-md-2">氏名</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="name" value="{{ $news_form->name }}">
+                            <input type="text" class="form-control" name="name" value="{{ $profile_form->name }}">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -31,23 +31,35 @@
                     <div class="form-group row">
                         <label class="col-md-2">趣味</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="hobby" value="{{ $news_form->hobby }}">
+                            <input type="text" class="form-control" name="hobby" value="{{ $profile_form->hobby }}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2">自己紹介欄</label></label>
                         <div class="col-md-10">
-                            <textarea class="form-control" name="introduction" rows="20">{{ $news_form->introduction }}</textarea>
+                            <textarea class="form-control" name="introduction" rows="20">{{ $profile_form->introduction }}</textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-10">
-                            <input type="hidden" name="id" value="{{ $news_form->id }}">
+                            <input type="hidden" name="id" value="{{ $profile_form->id }}">
                             {{ csrf_field() }}
                             <input type="submit" class="btn btn-primary" value="更新">
                         </div>
                     </div>
                 </form>
+                <div class="row mt-5">
+                    <div class="col-md-4 mx-auto">
+                        <h2>編集履歴</h2>
+                        <ul class="list-group">
+                            @if ($profile_form->updates != NULL)
+                                @foreach ($profile_form->updates as $update)
+                                    <li class="list-group-item">{{ $update->edited_at }}</li>
+                                @endforeach
+                            @endif
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

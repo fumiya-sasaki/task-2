@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Profile;
+use App\Update;
+use Carbon\Carbon;
 
 class ProfileController extends Controller
 {
@@ -17,27 +19,36 @@ class ProfileController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, Profile::$rules);
-        $news = new Profile;
+        $profile = new Profile;
         $form = $request->all();
         unset($form['_token']);
-        $news->fill($form);
-        $news->save();
+        $profile->fill($form);
+        $profile->save();
         
         return redirect('admin/profile/create');
     }
      public function edit(Request $request)
   {
-      $news = Profile::find($request->id);
-      if (empty($news)) {
+      $profile=Profile::find($request->id);
+      if (empty($profile)) {
         abort(404);    
       }
-      return view('admin.profile.edit', ['news_form' => $news]);
+      return view('admin.profile.edit', ['profile_form' => $profile]);
   }
 
     
 
-    public function update()
+    public function update(Request $request)
     {
+        $this->validate($request, Profile::$rules);
+        $profile=Profile::find($request->id);
+        $profile_form = $request->all();
+        unset($profile_form['_token']);
+        $profile->fill($profile_form)->save();
+        $update = new Update;
+        $update->profile_id= $profile->id;
+        $update->edited_at = Carbon::now();
+        $update->save();
         return redirect('admin/profile/edit');
     }
 }
